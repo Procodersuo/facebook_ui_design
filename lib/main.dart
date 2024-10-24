@@ -1,4 +1,4 @@
-import 'package:facebook_ui_design/screens/tab_layout_home_screen.dart';
+import 'package:facebook_ui_design/tab_layout_home_screen.dart';
 import 'package:flutter/material.dart';
 void main()
 {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       // my initial route first screen appear on app start
       initialRoute: TabLayoutHomeScreen.id,
       routes: {
-        TabLayoutHomeScreen.id : (context)=>TabLayoutHomeScreen(),
+        TabLayoutHomeScreen.id : (context)=>const TabLayoutHomeScreen(),
       },
     );
   }
