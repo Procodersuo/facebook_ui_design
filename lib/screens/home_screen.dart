@@ -1,3 +1,4 @@
+import 'package:facebook_ui_design/colors/colors.dart';
 import 'package:facebook_ui_design/widgets/like_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -9,16 +10,16 @@ class HomeScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     List<String> myList=["Talha Shoaib","Asad Ali","Shahzad Hyder","Naseem"];
-    List<Color> storiesColors=[Colors.blue,Colors.yellow,Colors.pink, Colors.teal,Colors.tealAccent,Colors.red
-      ,Colors.orange,Colors.indigo];
+
     return  CustomScrollView(
       slivers: [
+        // stories
        SliverToBoxAdapter(
          child: SizedBox(
            height: height/4,
            child: ListView.builder(
              scrollDirection: Axis.horizontal,
-               itemCount: storiesColors.length,
+               itemCount: MyColors.storiesColors.length,
                itemBuilder: (context,index)
            {
              return Padding(
@@ -27,16 +28,16 @@ class HomeScreen extends StatelessWidget {
                  height: height/4-25,
                  width: 100,
                  decoration: BoxDecoration(
-                   color: storiesColors[index],
+                   color: MyColors.storiesColors[index],
                    borderRadius: BorderRadius.circular(14),
                  ),
                  child: Stack(
                    children: [
                      Positioned(
-                       right:2,
+                       right:-9,
                        bottom: 2,
                        child: LikeIcon(
-                         icon: Icons.menu,
+                         icon: Icons.more_vert,
                        ),
                      )
                    ],
@@ -46,6 +47,7 @@ class HomeScreen extends StatelessWidget {
            }),
          ),
        ),
+        // posts
         SliverList(
           delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
@@ -122,7 +124,7 @@ class HomeScreen extends StatelessWidget {
                     Container(
                       height: 350,
                       decoration:  BoxDecoration(
-                        color: storiesColors[index],
+                        color: MyColors.storiesColors[index],
                       ),
                     ),
 
@@ -181,6 +183,7 @@ class HomeScreen extends StatelessWidget {
             childCount: 3, // Number of items
           ),
         ),
+// row for reels
 SliverToBoxAdapter(
   child: Row(
     children: [
@@ -192,12 +195,13 @@ SliverToBoxAdapter(
     ],
   ),
 ),
+        // reels
         SliverToBoxAdapter(
           child: SizedBox(
             height: height/2,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: storiesColors.length,
+                itemCount: MyColors.storiesColors.length,
                 itemBuilder: (context,index)
                 {
                   return Padding(
@@ -206,16 +210,16 @@ SliverToBoxAdapter(
                       height: height/4-25,
                       width: 200,
                       decoration: BoxDecoration(
-                        color: storiesColors[index],
+                        color: MyColors.storiesColors[index],
                         borderRadius: BorderRadius.circular(14),
                       ),
                       child:  Stack(
                         children: [
 Positioned(
-  right:2,
+  right:-9,
   bottom: 2,
   child: LikeIcon(
-    icon: Icons.menu,
+    icon: Icons.more_vert,
   ),
 )
                         ],
@@ -225,6 +229,7 @@ Positioned(
                 }),
           ),
         ),
+        // posts
         SliverList(
           delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
@@ -301,7 +306,7 @@ Positioned(
                     Container(
                       height: 350,
                       decoration:  BoxDecoration(
-                        color: storiesColors[index],
+                        color: MyColors.storiesColors[index],
                       ),
                     ),
 
