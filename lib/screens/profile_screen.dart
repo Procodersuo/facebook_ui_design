@@ -1,33 +1,52 @@
+import 'package:facebook_ui_design/widgets/button.dart';
 import 'package:facebook_ui_design/widgets/like_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../colors/colors.dart';
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    List<String> myCards = [
+      "Save", "Memories", "Groups", "Videos", "MarketPlace",
+      "Friends", "Feeds", "Events"
+    ];
+    List<IconData> myCardsIcon=[FontAwesomeIcons.save,FontAwesomeIcons.house,
+      FontAwesomeIcons.memory,FontAwesomeIcons.groupArrowsRotate,FontAwesomeIcons.video,FontAwesomeIcons.peopleGroup,
+      FontAwesomeIcons.rss,FontAwesomeIcons.calendar,];
+    List<String> myShortCuts=["Talha", "ASAD","SHAZAD","Naseem","Shafqat","Hamza","Ahmad","Karan AJULA"];
 
+    return Scaffold(
       body: CustomScrollView(
-
         slivers: [
           SliverAppBar(
-            // for app bar to go on scroll up and show instatntly when scroll do
-            floating: true,
-            title: Text("Menu",style: TextStyle(color: MyColors.blackColor,fontSize: 20,fontWeight: FontWeight.bold),),
+            floating: true,  // Enable floating behavior
+            snap: true,      // Allow snapping
+            pinned: false,   // Not pinned, will disappear
+            flexibleSpace: FlexibleSpaceBar(
+              background: Container(
+                decoration: const BoxDecoration(color: Colors.white),
+              ),
+            ),
+            title: Text(
+              "Menu",
+              style: TextStyle(
+                color: MyColors.blackColor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             actions: [
               Row(
                 children: [
-                  LikeIcon(icon:FontAwesomeIcons.replyAll,),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  LikeIcon(icon:FontAwesomeIcons.magnifyingGlass,),
+                  LikeIcon(icon: FontAwesomeIcons.replyAll),
+                  const SizedBox(width: 10),
+                  LikeIcon(icon: FontAwesomeIcons.magnifyingGlass),
                 ],
-              )
-
+              ),
             ],
           ),
           SliverToBoxAdapter(
@@ -37,13 +56,10 @@ class ProfileScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
-                  // Profile Container
                   SizedBox(
                     height: 80,
                     child: Card(
                       color: Colors.white,
-
                       elevation: 5,
                       child: Row(
                         children: [
@@ -53,14 +69,21 @@ class ProfileScreen extends StatelessWidget {
                               height: 30,
                               width: 30,
                               decoration: const BoxDecoration(
-                                  color: Colors.pink,
-                                  shape: BoxShape.circle
+                                color: Colors.pink,
+                                shape: BoxShape.circle,
                               ),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text("Talha Shoaib",style: TextStyle(color: MyColors.blackColor,fontSize: 20,fontWeight: FontWeight.bold),),
+                            child: Text(
+                              "Talha Shoaib",
+                              style: TextStyle(
+                                color: MyColors.blackColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                           const Spacer(),
                           Padding(
@@ -69,8 +92,8 @@ class ProfileScreen extends StatelessWidget {
                               height: 30,
                               width: 30,
                               decoration: const BoxDecoration(
-                                  color: Colors.pink,
-                                  shape: BoxShape.circle
+                                color: Colors.pink,
+                                shape: BoxShape.circle,
                               ),
                             ),
                           ),
@@ -80,32 +103,110 @@ class ProfileScreen extends StatelessWidget {
                               height: 30,
                               width: 30,
                               decoration: const BoxDecoration(
-                                  color: Colors.pink,
-                                  shape: BoxShape.circle
+                                color: Colors.pink,
+                                shape: BoxShape.circle,
                               ),
-
                             ),
                           ),
-
-
                         ],
                       ),
                     ),
                   ),
-                  // Text for your shortcuts
                   Padding(
                     padding: const EdgeInsets.all(5.0),
-                    child: Text("Your ShortCuts",style: TextStyle(color: MyColors.blackColor,fontSize: 15,fontWeight: FontWeight.w500),),
+                    child: Text(
+                      "Your Shortcuts",
+                      style: TextStyle(
+                        color: MyColors.blackColor,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
                   ),
-
-
                 ],
               ),
             ),
           ),
-
-
-
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 130,
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                  itemCount: MyColors.storiesColors.length,
+                  itemBuilder: (context,index)
+              {
+              return Padding(
+                padding:  const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 90, width: 80,
+                      decoration: BoxDecoration(
+                        color: MyColors.storiesColors[index],
+                        shape: BoxShape.circle
+                      ),
+                      
+                    ),
+                    Text(myShortCuts[index])
+                  ],
+                ),
+              );
+              }),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GridView.builder(
+                physics: const NeverScrollableScrollPhysics(), // Disables grid scroll
+                shrinkWrap: true, // Allows GridView to wrap its height
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 4.0,
+                  crossAxisSpacing: 4.0,
+                  childAspectRatio: 2.5,
+                ),
+                itemCount: myCards.length, // Adjust this as needed
+                itemBuilder: (context, index) {
+                  return Card(
+                    color: Colors.white,
+                    elevation: 5,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          left: 10,
+                          bottom: 4,
+                          child: Text(
+                            myCards[index],
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 10,
+                          bottom: 35,
+                          child: Icon(myCardsIcon[index])
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+         SliverToBoxAdapter(
+           child: ProfileScreenButton(
+             text: "See More",
+           ),
+         ),
+         SliverToBoxAdapter(
+           child: ProfileScreenButton(
+             text: "Log out",
+           ),
+         ),
         ],
       ),
     );
