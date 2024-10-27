@@ -14,7 +14,7 @@ class ProfileScreen extends StatelessWidget {
       "Save", "Memories", "Groups", "Videos", "MarketPlace",
       "Friends", "Feeds", "Events"
     ];
-    List<IconData> myCardsIcon=[FontAwesomeIcons.save,FontAwesomeIcons.house,
+    List<IconData> myCardsIcon=[FontAwesomeIcons.floppyDisk,FontAwesomeIcons.house,
       FontAwesomeIcons.memory,FontAwesomeIcons.groupArrowsRotate,FontAwesomeIcons.video,FontAwesomeIcons.peopleGroup,
       FontAwesomeIcons.rss,FontAwesomeIcons.calendar,];
     List<String> myShortCuts=["Talha", "ASAD","SHAZAD","Naseem","Shafqat","Hamza","Ahmad","Karan AJULA"];
