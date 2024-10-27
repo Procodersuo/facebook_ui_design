@@ -18,6 +18,7 @@ class ProfileScreen extends StatelessWidget {
       FontAwesomeIcons.memory,FontAwesomeIcons.groupArrowsRotate,FontAwesomeIcons.video,FontAwesomeIcons.peopleGroup,
       FontAwesomeIcons.rss,FontAwesomeIcons.calendar,];
     List<String> myShortCuts=["Talha", "ASAD","SHAZAD","Naseem","Shafqat","Hamza","Ahmad","Karan AJULA"];
+    List<String> myListTile=["Help and Support","Setting and Privacy","Professional access","Also from meta"];
 
     return Scaffold(
       body: CustomScrollView(
@@ -106,6 +107,9 @@ class ProfileScreen extends StatelessWidget {
                                 color: Colors.pink,
                                 shape: BoxShape.circle,
                               ),
+                              child: const Center(
+                                child: Icon(Icons.keyboard_arrow_down),
+                              ),
                             ),
                           ),
                         ],
@@ -188,7 +192,7 @@ class ProfileScreen extends StatelessWidget {
                         Positioned(
                           left: 10,
                           bottom: 35,
-                          child: Icon(myCardsIcon[index])
+                          child: Icon(myCardsIcon[index],color: MyColors.storiesColors[index],)
                         ),
                       ],
                     ),
@@ -202,11 +206,34 @@ class ProfileScreen extends StatelessWidget {
              text: "See More",
            ),
          ),
+          SliverList(delegate: SliverChildBuilderDelegate(
+                  (BuildContext context,int index)
+              {
+                return ListTile(
+                    leading: Container(
+                      height: 25,
+                      width: 25,
+                      decoration: BoxDecoration(
+                          color: MyColors.storiesColors[index],
+                          shape: BoxShape.circle
+                      ),
+                    ),
+                    title: Text(myListTile[index]),
+                    trailing:const Icon(Icons.keyboard_arrow_down)
+
+                );
+              },
+              childCount: 4
+          )),
          SliverToBoxAdapter(
            child: ProfileScreenButton(
              text: "Log out",
            ),
          ),
+
+
+
+
         ],
       ),
     );
