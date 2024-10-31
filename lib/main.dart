@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // my initial route first screen appear on app start
       initialRoute: TabLayoutHomeScreen.id,
+      debugShowCheckedModeBanner: false,
       routes: {
         TabLayoutHomeScreen.id : (context)=>const TabLayoutHomeScreen(),
       },
