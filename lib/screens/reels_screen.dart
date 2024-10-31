@@ -16,7 +16,7 @@ class ReelsScreen extends StatelessWidget {
           'Videos',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 25.0,
+            fontSize: 26.0,
             color: Colors.black,
           ),
         ),
